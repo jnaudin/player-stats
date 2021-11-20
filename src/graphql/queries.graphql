@@ -1,0 +1,23 @@
+query headToHead {
+  headToHead {
+    firstname
+    lastname
+    sex
+    picture {
+      url
+    }
+    country {
+      picture {
+        url
+      }
+    }
+    stats {
+      rank
+      points
+      weight
+      height
+      age
+      last
+    }
+  }
+}
