@@ -7,6 +7,7 @@ export const handlers = [
           {
             firstname: "Stan",
             lastname: "Wawrinka",
+            shortname: "S.WAW",
             sex: "MAN",
             picture: {
               url:
@@ -19,6 +20,7 @@ export const handlers = [
                   "https://i.eurosport.com/_iss_/geo/country/flag/large/2213.png",
                 __typename: "Picture",
               },
+              code: "SUI",
               __typename: "Country",
             },
             stats: {
@@ -35,6 +37,7 @@ export const handlers = [
           {
             firstname: "Rafael",
             lastname: "Nadal",
+            shortname: "R.NAD",
             sex: "MAN",
             picture: {
               url:
@@ -47,6 +50,7 @@ export const handlers = [
                   "https://i.eurosport.com/_iss_/geo/country/flag/large/2203.png",
                 __typename: "Picture",
               },
+              code: "ESP",
               __typename: "Country",
             },
             stats: {

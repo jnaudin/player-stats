@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
+export type Maybe<T> = T | null | undefined;
+export type InputMaybe<T> = T | null | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -60,7 +60,7 @@ export type Stats = {
 export type HeadToHeadQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HeadToHeadQuery = { __typename?: 'Query', headToHead?: Array<{ __typename?: 'Player', firstname: string, lastname: string, sex: Sex, picture: { __typename?: 'Picture', url: string }, country: { __typename?: 'Country', picture: { __typename?: 'Picture', url: string } }, stats: { __typename?: 'Stats', rank: number, points: number, weight: number, height: number, age: number, last: Array<boolean | null | undefined> } } | null | undefined> | null | undefined };
+export type HeadToHeadQuery = { __typename?: 'Query', headToHead?: Array<{ __typename?: 'Player', firstname: string, lastname: string, shortname: string, sex: Sex, picture: { __typename?: 'Picture', url: string }, country: { __typename?: 'Country', code: string, picture: { __typename?: 'Picture', url: string } }, stats: { __typename?: 'Stats', rank: number, points: number, weight: number, height: number, age: number, last: Array<boolean | null | undefined> } } | null | undefined> | null | undefined };
 
 
 export const HeadToHeadDocument = gql`
@@ -68,6 +68,7 @@ export const HeadToHeadDocument = gql`
   headToHead {
     firstname
     lastname
+    shortname
     sex
     picture {
       url
@@ -76,6 +77,7 @@ export const HeadToHeadDocument = gql`
       picture {
         url
       }
+      code
     }
     stats {
       rank
