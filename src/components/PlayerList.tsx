@@ -17,6 +17,7 @@ export const PlayerList = () => {
         Choose a player:{" "}
         {data.headToHead.map((player: PlayerType | undefined | null) => (
           <span
+            key={`${player?.firstname}-${player?.firstname}`}
             onClick={() => player && setDisplayedPlayer(player)}
           >{`${player?.firstname} ${player?.lastname}`}</span>
         ))}

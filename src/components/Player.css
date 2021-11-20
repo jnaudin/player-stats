@@ -1,0 +1,34 @@
+.container {
+  margin: 3rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playerData {
+  margin-left: 2rem;
+  text-align: left;
+}
+
+.flag {
+  width: 36px;
+  height: 24px;
+  margin-right: 1rem;
+}
+
+.win {
+  color: green;
+}
+
+.loose {
+  color: red;
+}
