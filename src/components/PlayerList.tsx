@@ -1,16 +1,9 @@
 import { ChangeEvent, useState } from "react";
 
-import "./PlayerList.css"
+import "./PlayerList.css";
 import { Player as PlayerType, useHeadToHeadQuery } from "../generated/graphql";
 import { Select } from "../ui/Select/Select";
 import { Player } from "./Player";
-
-const getPlayerFromLastname = (
-  lastname: string,
-  players: (PlayerType | undefined | null)[]
-) => {
-  return players.find((player) => player && player.lastname === lastname);
-};
 
 export const PlayerList = () => {
   const [displayedPlayer, setDisplayedPlayer] = useState<
@@ -21,10 +14,13 @@ export const PlayerList = () => {
   if (loading) return <p>Loading...</p>;
   if (error || !data?.headToHead) return <p>Error :(</p>;
 
-  const options = data.headToHead.map((player) => ({
-    label: `${player?.firstname}${player?.lastname}`,
-    value: player?.lastname || "",
-  }));
+  const options = [
+    { label: "All players", value: "" },
+    ...data.headToHead.map((player) => ({
+      label: `${player?.firstname}${player?.lastname}`,
+      value: player?.lastname || "",
+    })),
+  ];
 
   return (
     <div className="playerList__container">
@@ -39,16 +35,13 @@ export const PlayerList = () => {
         />
       </div>
       <div>
-        {displayedPlayer && (
-          <Player
-            player={
-              getPlayerFromLastname(
-                displayedPlayer,
-                data.headToHead
-              ) as PlayerType
-            }
-          />
-        )}
+        {data.headToHead
+          .filter(
+            (player) => !displayedPlayer || player?.lastname === displayedPlayer
+          )
+          .map((player) => (
+            <Player player={player as PlayerType} />
+          ))}
       </div>
     </div>
   );
