@@ -6,10 +6,10 @@
 
 label {
   color: purple;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+  margin: 1rem 0;
+  font-size: 1.6rem;
 }
 
 select {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }

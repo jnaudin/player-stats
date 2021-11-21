@@ -9,7 +9,7 @@ interface SelectProps extends ComponentProps<"select"> {
 export const Select = ({ options, label, id, ...props }: SelectProps) => {
   return (
     <div className="select__container">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>{label}:</label>
       <select {...props}>
         {options.map(({ label, value }) => (
           <option key={value} value={value}>
