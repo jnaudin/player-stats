@@ -41,6 +41,8 @@ export const Player = ({
               </span>
             )
           )}
+          ({last.filter((result) => !!result).length} wins &{" "}
+          {last.filter((result) => !result).length} losses)
         </div>
       </div>
     </div>
