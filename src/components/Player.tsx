@@ -14,16 +14,16 @@ export const Player = ({
   player: PlayerType;
 }) => {
   return (
-    <div className="container">
-      <h2 className="header">
-        <img className="flag" alt="country" src={country.picture.url} />{" "}
+    <div className="player__container">
+      <h2 className="player__header">
+        <img className="player__flag" alt="country" src={country.picture.url} />{" "}
         {`${firstname} ${lastname} (${sex === "MAN" ? "homme" : "femme"})`}
       </h2>
-      <div className="stats-container">
+      <div className="player__stats-container">
         <div>
           <img alt="player" src={picture.url} />
         </div>
-        <div className="playerData">
+        <div className="player__playerData">
           <div>
             Rank: {rank} ({points} points)
           </div>
@@ -32,11 +32,11 @@ export const Player = ({
           <div>{`${age} years old`}</div>
           {last.map((win, index) =>
             win ? (
-              <span key={index} className="win">
+              <span key={index} className="player__win">
                 W
               </span>
             ) : (
-              <span key={index} className="loose">
+              <span key={index} className="player__loose">
                 L
               </span>
             )

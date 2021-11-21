@@ -3,8 +3,8 @@ import { PlayerList } from "./components/PlayerList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Player stats</header>
+    <div className="app">
+      <header className="app__header">Player stats</header>
       <PlayerList />
     </div>
   );
