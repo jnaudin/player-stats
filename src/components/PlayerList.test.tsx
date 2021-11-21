@@ -10,6 +10,6 @@ test("renders player choice", async () => {
     </ApolloProvider>
   );
   await waitFor(() => {
-    expect(getByText(/Choose a player:/i)).toBeInTheDocument();
+    expect(getByText(/Choose a player/i)).toBeInTheDocument();
   });
 });

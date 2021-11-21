@@ -1,28 +1,55 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+
+import "./PlayerList.css"
 import { Player as PlayerType, useHeadToHeadQuery } from "../generated/graphql";
+import { Select } from "../ui/Select/Select";
 import { Player } from "./Player";
+
+const getPlayerFromLastname = (
+  lastname: string,
+  players: (PlayerType | undefined | null)[]
+) => {
+  return players.find((player) => player && player.lastname === lastname);
+};
 
 export const PlayerList = () => {
   const [displayedPlayer, setDisplayedPlayer] = useState<
-    PlayerType | undefined
+    PlayerType["lastname"] | undefined
   >(undefined);
   const { loading, error, data } = useHeadToHeadQuery();
 
   if (loading) return <p>Loading...</p>;
   if (error || !data?.headToHead) return <p>Error :(</p>;
 
+  const options = data.headToHead.map((player) => ({
+    label: `${player?.firstname}${player?.lastname}`,
+    value: player?.lastname || "",
+  }));
+
   return (
-    <div>
+    <div className="playerList__container">
       <div>
-        Choose a player:{" "}
-        {data.headToHead.map((player: PlayerType | undefined | null) => (
-          <span
-            key={`${player?.firstname}-${player?.firstname}`}
-            onClick={() => player && setDisplayedPlayer(player)}
-          >{`${player?.firstname} ${player?.lastname}`}</span>
-        ))}
+        <Select
+          id="player"
+          label="Choose a player"
+          options={options}
+          onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+            setDisplayedPlayer(event.target.value)
+          }
+        />
       </div>
-      <div>{displayedPlayer && <Player player={displayedPlayer} />}</div>
+      <div>
+        {displayedPlayer && (
+          <Player
+            player={
+              getPlayerFromLastname(
+                displayedPlayer,
+                data.headToHead
+              ) as PlayerType
+            }
+          />
+        )}
+      </div>
     </div>
   );
 };
