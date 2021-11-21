@@ -1,9 +1,12 @@
 import { ChangeEvent, useState } from "react";
 
 import "./PlayerList.css";
-import { Player as PlayerType, useHeadToHeadQuery } from "../generated/graphql";
-import { Select } from "../ui/Select/Select";
-import { Player } from "./Player";
+import {
+  Player as PlayerType,
+  useHeadToHeadQuery,
+} from "../../generated/graphql";
+import { Select } from "../../ui/Select/Select";
+import { Player } from "../Player/Player";
 
 export const PlayerList = () => {
   const [displayedPlayer, setDisplayedPlayer] = useState<
@@ -17,7 +20,7 @@ export const PlayerList = () => {
   const options = [
     { label: "All players", value: "" },
     ...data.headToHead.map((player) => ({
-      label: `${player?.firstname}${player?.lastname}`,
+      label: `${player?.firstname} ${player?.lastname}`,
       value: player?.lastname || "",
     })),
   ];
@@ -40,7 +43,10 @@ export const PlayerList = () => {
             (player) => !displayedPlayer || player?.lastname === displayedPlayer
           )
           .map((player) => (
-            <Player player={player as PlayerType} />
+            <Player
+              key={`${player?.firstname} ${player?.lastname}`}
+              player={player as PlayerType}
+            />
           ))}
       </div>
     </div>

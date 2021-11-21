@@ -1,5 +1,5 @@
 import "./App.css";
-import { PlayerList } from "./components/PlayerList";
+import { PlayerList } from "./components/PlayerList/PlayerList";
 
 function App() {
   return (

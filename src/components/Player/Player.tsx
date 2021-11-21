@@ -1,5 +1,5 @@
 import "./Player.css";
-import { Player as PlayerType } from "../generated/graphql";
+import { Player as PlayerType } from "../../generated/graphql";
 
 export const Player = ({
   player: {
